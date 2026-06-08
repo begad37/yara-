@@ -22,7 +22,7 @@
             color: #6d5b00;
         }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -51,10 +51,36 @@
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        /* Top Action Buttons */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .hero-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid #e0c64f;
+            border-radius: 15px;
+            color: #6d5b00;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .hero-btn:hover {
+            background: #e0c64f;
+            color: white;
+            transform: translateY(-3px);
         }
 
         .counter {
-            margin-top: 30px;
+            margin-top: 15px;
             background: white;
             padding: 20px 35px;
             border-radius: 25px;
@@ -72,9 +98,9 @@
             margin-top: 10px;
         }
 
-        /* Sections */
+        /* Sections General */
         section {
-            padding: 90px 20px;
+            padding: 70px 20px;
             max-width: 1100px;
             margin: auto;
         }
@@ -82,7 +108,39 @@
         .title {
             text-align: center;
             font-size: 2.3rem;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+        }
+
+        /* Letters Grid (The 20 Options) */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .options-grid button {
+            padding: 15px;
+            min-height: 80px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6d5b00;
+            background: white;
+            border: 1px solid rgba(224, 198, 79, 0.4);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .options-grid button:hover {
+            background: linear-gradient(135deg, #ffffff, #FFF9C4);
+            border-color: #e0c64f;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(224, 198, 79, 0.2);
         }
 
         /* Timeline */
@@ -110,17 +168,9 @@
             box-shadow: 0 10px 20px rgba(0,0,0,.08);
         }
 
-        .memory:nth-child(odd) {
-            margin-right: auto;
-        }
-
-        .memory:nth-child(even) {
-            margin-left: auto;
-        }
-
-        .memory h3 {
-            margin-bottom: 10px;
-        }
+        .memory:nth-child(odd) { margin-right: auto; }
+        .memory:nth-child(even) { margin-left: auto; }
+        .memory h3 { margin-bottom: 10px; }
 
         /* Gallery */
         .gallery {
@@ -138,11 +188,9 @@
             cursor: pointer;
         }
 
-        .gallery img:hover {
-            transform: scale(1.04);
-        }
+        .gallery img:hover { transform: scale(1.04); }
 
-        /* Reasons */
+        /* Reasons Box */
         .reasons-box {
             text-align: center;
             background: white;
@@ -164,62 +212,103 @@
             transition: 0.2s;
         }
 
-        .reasons-box button:active {
-            transform: scale(0.95);
-        }
-
-        .reason {
-            margin-top: 25px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            min-height: 60px;
-        }
+        .reasons-box button:active { transform: scale(0.95); }
+        .reason { margin-top: 25px; font-size: 1.3rem; font-weight: bold; min-height: 60px; }
 
         /* Footer */
-        .footer {
-            text-align: center;
-            padding: 70px 20px;
-            font-size: 1.2rem;
-        }
+        .footer { text-align: center; padding: 70px 20px; font-size: 1.2rem; }
 
-        /* Animation */
-        .hidden {
+        /* Scroll Animations */
+        .hidden { opacity: 0; transform: translateY(40px); transition: 1s ease; }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* Modal Popup (صندوق الرسائل المنبثق السحري) */
+        .modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
             opacity: 0;
-            transform: translateY(50px);
-            transition: 1s ease;
+            pointer-events: none;
+            transition: 0.4s ease;
         }
 
-        .show {
+        .modal.active {
             opacity: 1;
-            transform: translateY(0);
+            pointer-events: auto;
         }
 
-        @media(max-width:768px){
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+        .modal-content {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: scale(0.8);
+            transition: 0.4s ease;
+            position: relative;
+        }
 
-            .timeline::before {
-                display: none;
-            }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
 
-            .memory {
-                width: 100%;
-            }
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: #e0c64f;
+            font-size: 1.5rem;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            background: #e0c64f;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover { background: #cbb139; }
+
+        /* Responsive Design */
+        @media(max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .timeline::before { display: none; }
+            .memory { width: 100%; }
+            .options-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .options-grid button { font-size: 12px; padding: 10px; min-height: 70px; }
         }
     </style>
 </head>
 <body>
 
+<!-- Hero Section -->
 <section class="hero">
     <img src="images/yara1.jpg" class="profile" alt="Yara">
-
     <h1>❤️ Yara ❤️</h1>
-
-    <p>
-        كل لحظة وكل ذكرى هنا معمولة بحب...
-        ومهما عدت الأيام هتفضل ليها مكانة خاصة.
-    </p>
+    <p>كل لحظة وكل ذكرى هنا معمولة بحب... ومهما عدت الأيام هتفضل ليها مكانة خاصة.</p>
+    
+    <!-- الأزرار العلوية الأساسية من كودك القديم -->
+    <div class="hero-buttons">
+        <button class="hero-btn" onclick="openMessage('دوسي هنا يا يويو', 'هنا تكتب الرسالة الخاصة بـ (دوسي هنا يا يويو)... يمكنك استبدال هذا النص بما تريد!')">دوسي هنا يا يويو</button>
+        <button class="hero-btn" onclick="openMessage('LOVE ❤️', 'هنا يكتب كلام الحب الموجه ليارا... عبر عن مشاعرك بالكامل في هذا الصندوق!')">LOVE❤️</button>
+    </div>
 
     <div class="counter">
         <h2>❤️ بقالنا مع بعض</h2>
@@ -227,30 +316,53 @@
     </div>
 </section>
 
+<!-- Section: Messages & Promises (الـ 20 خيار المدموجة سحرياً) -->
+<section>
+    <h2 class="title hidden">💌 رسائل وعهود إلى قلبي</h2>
+    <div class="options-grid hidden">
+        <button onclick="openMessage('وعد بالبقاء دائمًا معًا', 'هنا تكتب رسالة أو تفاصيل: وعد بالبقاء دائمًا معًا...')">وعد بالبقاء دائمًا معًا</button>
+        <button onclick="openMessage('أنت حياتي وروحي', 'هنا تكتب رسالة أو تفاصيل: أنت حياتي وروحي...')">أنت حياتي وروحي</button>
+        <button onclick="openMessage('وصف المشاعر العميقة تجاه يارا', 'هنا تكتب رسالة أو تفاصيل: وصف المشاعر العميقة تجاه يارا...')">وصف المشاعر العميقة</button>
+        <button onclick="openMessage('كلام عن التقدير والامتنان ليارا', 'هنا تكتب رسالة أو تفاصيل: كلام عن التقدير والامتنان ليارا...')">تقدير وامتنان ليارا</button>
+        <button onclick="openMessage('كلمة واحدة: بحبك', 'هنا تكتب رسالة أو تفاصيل: كلمة واحدة: بحبك...')">كلمة واحدة: بحبك</button>
+        <button onclick="openMessage('بحبك بكل اللغات والمشاعر', 'هنا تكتب رسالة أو تفاصيل: بحبك بكل اللغات والمشاعر...')">بحبك بكل اللغات</button>
+        <button onclick="openMessage('مشاعري التي لا أستطيع وصفها لكِ', 'هنا تكتب رسالة أو تفاصيل: مشاعري التي لا أستطيع وصفها لكِ...')">مشاعري التي لا توصف</button>
+        <button onclick="openMessage('يوم الفيلم والاعتراف بالحب', 'هنا تكتب كواليس وتفاصيل ذكرى: يوم الفيلم والاعتراف بالحب...')">يوم الفيلم والاعتراف</button>
+        <button onclick="openMessage('قصة بيجاد ويارا: الحب يولد من الصدف', 'هنا تكتب قصة بيجاد ويارا الرائعة: الحب يولد من الصدف...')">قصة بيجاد ويارا ❤️</button>
+        <button onclick="openMessage('الإحساس بالحب قبل المعرفة', 'هنا تكتب رسالة أو تفاصيل: الإحساس بالحب قبل المعرفة...')">الإحساس بالحب قبل المعرفة</button>
+        <button onclick="openMessage('حب قوي وعشق كبير', 'هنا تكتب رسالة أو تفاصيل: حب قوي وعشق كبير...')">حب قوي وعشق كبير</button>
+        <button onclick="openMessage('أنتِ حياتي كلها يا يويو', 'هنا تكتب رسالة أو تفاصيل: أنتِ حياتي كلها يا يويو...')">أنتِ حياتي كلها يا يويو</button>
+        <button onclick="openMessage('سنة مختلفة بسبب وجودك', 'هنا تكتب رسالة أو تفاصيل: سنة مختلفة بسبب وجودك...')">سنة مختلفة بوجودك</button>
+        <button onclick="openMessage('لأجلك حتى في غيابي', 'هنا تكتب رسالة أو تفاصيل: لأجلك حتى في غيابي...')">لأجلك حتى في غيابي</button>
+        <button onclick="openMessage('17-2', 'تفاصيل ورسالة يوم 17-2 الذكرى الجميلة...')">ذكرى 17-2</button>
+        <button onclick="openMessage('24-2', 'تفاصيل ورسالة يوم 24-2 اليوم المختلف المليء بالمشاعر...')">ذكرى 24-2</button>
+        <button onclick="openMessage('28-2', 'تفاصيل ورسالة لذكرى يوم 28-2 اللحظة الأجمل...')">ذكرى 28-2</button>
+        <button onclick="openMessage('ليلة العيد', 'تفاصيل ورسالة يوم ليلة العيد والمكان الخاص في القلب...')">ليلة العيد</button>
+        <button onclick="openMessage('8-4', 'تفاصيل ورسالة خاصة بذكرى يوم 8-4...')">ذكرى 8-4</button>
+        <button onclick="openMessage('15-4', 'تفاصيل ورسالة خاصة بذكرى يوم 15-4...')">ذكرى 15-4</button>
+    </div>
+</section>
+
+<!-- Section: Timeline -->
 <section>
     <h2 class="title hidden">✨ أجمل الذكريات</h2>
-
     <div class="timeline">
         <div class="memory hidden">
             <h3>❤️ 28-10-2024</h3>
             <p>بداية الحكاية وأول خطوة في الرحلة.</p>
         </div>
-
         <div class="memory hidden">
             <h3>❤️ 17-2</h3>
             <p>ذكرى جميلة عمرها ما هتتنسي.</p>
         </div>
-
         <div class="memory hidden">
             <h3>❤️ 24-2</h3>
             <p>يوم مختلف مليان مشاعر حقيقية.</p>
         </div>
-
         <div class="memory hidden">
             <h3>❤️ 28-2</h3>
             <p>لحظة من أجمل اللحظات.</p>
         </div>
-
         <div class="memory hidden">
             <h3>❤️ ليلة العيد</h3>
             <p>ليلة ليها مكان خاص في القلب.</p>
@@ -258,9 +370,9 @@
     </div>
 </section>
 
+<!-- Section: Gallery (12 Images Only) -->
 <section>
     <h2 class="title hidden">📸 صور وذكريات</h2>
-
     <div class="gallery">
         <img src="images/yara1.jpg" alt="Memory 1">
         <img src="images/yara2.jpg" alt="Memory 2">
@@ -277,21 +389,28 @@
     </div>
 </section>
 
+<!-- Section: Reasons Game -->
 <section>
     <h2 class="title hidden">❤️ أسباب بحبك عشانها</h2>
-
     <div class="reasons-box hidden">
         <button onclick="showReason()">اضغطي هنا ❤️</button>
         <div class="reason" id="reason">...</div>
     </div>
 </section>
 
+<!-- Footer -->
 <section class="footer">
-    <p>
-        ❤️ مهما عدت الأيام...
-        هتفضلي شخص ليه مكانة خاصة جدًا ❤️
-    </p>
+    <p>❤️ مهما عدت الأيام... هتفضلي شخص ليه مكانة خاصة جدًا ❤️</p>
 </section>
+
+<!-- المودال السحري (صندوق الرسائل المنبثق) -->
+<div class="modal" id="messageModal">
+    <div class="modal-content">
+        <h3 id="modalTitle">العنوان</h3>
+        <p id="modalBody">نص الرسالة الافتراضي...</p>
+        <button class="close-btn" onclick="closeMessage()">إغلاق ❤️</button>
+    </div>
+</div>
 
 <script>
     /* Counter */
@@ -299,10 +418,9 @@
     const today = new Date();
     const diff = today - startDate;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    
     document.getElementById("days").innerText = days + " يوم";
 
-    /* Reasons */
+    /* Reasons array */
     const reasons = [
         "بحب ضحكتك ❤️",
         "بحب طريقتك ❤️",
@@ -319,6 +437,25 @@
     function showReason() {
         const random = Math.floor(Math.random() * reasons.length);
         document.getElementById("reason").innerHTML = reasons[random];
+    }
+
+    /* Modal Popup Functions (التحكم في فتح وإغلاق الرسائل) */
+    function openMessage(title, text) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalBody').innerText = text;
+        document.getElementById('messageModal').classList.add('active');
+    }
+
+    function closeMessage() {
+        document.getElementById('messageModal').classList.remove('active');
+    }
+
+    // إغلاق المودال عند الضغط في أي مكان خارج الصندوق الأبيض بالخطأ
+    window.onclick = function(event) {
+        const modal = document.getElementById('messageModal');
+        if (event.target == modal) {
+            modal.classList.remove('active');
+        }
     }
 
     /* Scroll Animation */
