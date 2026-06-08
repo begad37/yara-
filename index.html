@@ -143,7 +143,7 @@
             box-shadow: 0 8px 20px rgba(224, 198, 79, 0.2);
         }
 
-        /* Timeline */
+        /* Timeline (الذكريات التفاعلية) */
         .timeline {
             position: relative;
         }
@@ -161,16 +161,46 @@
 
         .memory {
             background: white;
-            padding: 20px;
+            padding: 22px;
             border-radius: 20px;
             width: 45%;
             margin-bottom: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,.08);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+
+        .memory:hover {
+            border-color: #e0c64f;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(224, 198, 79, 0.15);
         }
 
         .memory:nth-child(odd) { margin-right: auto; }
         .memory:nth-child(even) { margin-left: auto; }
-        .memory h3 { margin-bottom: 10px; }
+        
+        .memory h3 { 
+            margin-bottom: 8px; 
+            color: #8B7500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .memory p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .click-hint {
+            display: block;
+            font-size: 0.8rem;
+            color: #e0c64f;
+            margin-top: 10px;
+            font-weight: bold;
+        }
 
         /* Gallery */
         .gallery {
@@ -222,7 +252,7 @@
         .hidden { opacity: 0; transform: translateY(40px); transition: 1s ease; }
         .show { opacity: 1; transform: translateY(0); }
 
-        /* Modal Popup (صندوق الرسائل المنبثق السحري) */
+        /* Modal Popup */
         .modal {
             position: fixed;
             top: 0; left: 0;
@@ -262,8 +292,8 @@
 
         .modal-content h3 {
             margin-bottom: 15px;
-            color: #e0c64f;
-            font-size: 1.5rem;
+            color: #8B7500;
+            font-size: 1.6rem;
         }
 
         .modal-content p {
@@ -304,7 +334,6 @@
     <h1>❤️ Yara ❤️</h1>
     <p>كل لحظة وكل ذكرى هنا معمولة بحب... ومهما عدت الأيام هتفضل ليها مكانة خاصة.</p>
     
-    <!-- الأزرار العلوية الأساسية من كودك القديم -->
     <div class="hero-buttons">
         <button class="hero-btn" onclick="openMessage('دوسي هنا يا يويو', 'هنا تكتب الرسالة الخاصة بـ (دوسي هنا يا يويو)... يمكنك استبدال هذا النص بما تريد!')">دوسي هنا يا يويو</button>
         <button class="hero-btn" onclick="openMessage('LOVE ❤️', 'هنا يكتب كلام الحب الموجه ليارا... عبر عن مشاعرك بالكامل في هذا الصندوق!')">LOVE❤️</button>
@@ -316,7 +345,7 @@
     </div>
 </section>
 
-<!-- Section: Messages & Promises (الـ 20 خيار المدموجة سحرياً) -->
+<!-- Section: Messages & Promises (الـ 20 خيار) -->
 <section>
     <h2 class="title hidden">💌 رسائل وعهود إلى قلبي</h2>
     <div class="options-grid hidden">
@@ -343,30 +372,41 @@
     </div>
 </section>
 
-<!-- Section: Timeline -->
+<!-- Section: Timeline (الآن أصبحت بطاقات تفاعلية قابلة للضغط بقوة!) -->
 <section>
     <h2 class="title hidden">✨ أجمل الذكريات</h2>
     <div class="timeline">
-        <div class="memory hidden">
+        
+        <div class="memory hidden" onclick="openMessage('حكاية 28-10-2024 🗓️', 'هنا تكتب بالتفصيل قصة بداية الحكاية، وأول خطوة في الرحلة، وإيه اللي كان في قلبك اليوم ده...')">
             <h3>❤️ 28-10-2024</h3>
             <p>بداية الحكاية وأول خطوة في الرحلة.</p>
+            <span class="click-hint">اضغطي لمعرفة الحكاية 😉</span>
         </div>
-        <div class="memory hidden">
+
+        <div class="memory hidden" onclick="openMessage('سر ذكرى 17-2 🌟', 'هنا تكتب رسالة خاصة جداً عن تفاصيل وكواليس ذكرى يوم 17-2 الجميلة اللي عمرها ما هتتنسي...')">
             <h3>❤️ 17-2</h3>
             <p>ذكرى جميلة عمرها ما هتتنسي.</p>
+            <span class="click-hint">اضغطي لمعرفة الحكاية 😉</span>
         </div>
-        <div class="memory hidden">
+
+        <div class="memory hidden" onclick="openMessage('تفاصيل يوم 24-2 💖', 'هنا تضع كلامك عن يوم 24-2 وازاي كان يوم مختلف ومليان بمشاعر حقيقية وصادقة...')">
             <h3>❤️ 24-2</h3>
             <p>يوم مختلف مليان مشاعر حقيقية.</p>
+            <span class="click-hint">اضغطي لمعرفة الحكاية 😉</span>
         </div>
-        <div class="memory hidden">
+
+        <div class="memory hidden" onclick="openMessage('كواليس 28-2 ✨', 'هنا تكتب عن اللحظة التي تعتبرها من أجمل اللحظات بينكم وتفاصيل ما دار فيها...')">
             <h3>❤️ 28-2</h3>
             <p>لحظة من أجمل اللحظات.</p>
+            <span class="click-hint">اضغطي لمعرفة الحكاية 😉</span>
         </div>
-        <div class="memory hidden">
+
+        <div class="memory hidden" onclick="openMessage('سحر ليلة العيد 🌙', 'هنا تكتب الكلام المخصص لليلة العيد، والمكانة الخاصة جداً اللي محفورة ليها جوة قلبك بسبب يارا...')">
             <h3>❤️ ليلة العيد</h3>
             <p>ليلة ليها مكان خاص في القلب.</p>
+            <span class="click-hint">اضغطي لمعرفة الحكاية 😉</span>
         </div>
+
     </div>
 </section>
 
@@ -403,7 +443,7 @@
     <p>❤️ مهما عدت الأيام... هتفضلي شخص ليه مكانة خاصة جدًا ❤️</p>
 </section>
 
-<!-- المودال السحري (صندوق الرسائل المنبثق) -->
+<!-- المودال السحري (صندوق الرسائل المنبثق المشترك) -->
 <div class="modal" id="messageModal">
     <div class="modal-content">
         <h3 id="modalTitle">العنوان</h3>
@@ -439,7 +479,7 @@
         document.getElementById("reason").innerHTML = reasons[random];
     }
 
-    /* Modal Popup Functions (التحكم في فتح وإغلاق الرسائل) */
+    /* Modal Popup Functions */
     function openMessage(title, text) {
         document.getElementById('modalTitle').innerText = title;
         document.getElementById('modalBody').innerText = text;
@@ -450,7 +490,6 @@
         document.getElementById('messageModal').classList.remove('active');
     }
 
-    // إغلاق المودال عند الضغط في أي مكان خارج الصندوق الأبيض بالخطأ
     window.onclick = function(event) {
         const modal = document.getElementById('messageModal');
         if (event.target == modal) {
