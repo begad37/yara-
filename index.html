@@ -143,7 +143,7 @@
             box-shadow: 0 8px 20px rgba(224, 198, 79, 0.2);
         }
 
-        /* Timeline (الذكريات التفاعلية) */
+        /* Timeline */
         .timeline {
             position: relative;
         }
@@ -219,31 +219,6 @@
         }
 
         .gallery img:hover { transform: scale(1.04); }
-
-        /* Reasons Box */
-        .reasons-box {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,.08);
-        }
-
-        .reasons-box button {
-            background: #e0c64f;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        .reasons-box button:active { transform: scale(0.95); }
-        .reason { margin-top: 25px; font-size: 1.3rem; font-weight: bold; min-height: 60px; }
 
         /* Footer */
         .footer { text-align: center; padding: 70px 20px; font-size: 1.2rem; }
@@ -372,7 +347,7 @@
     </div>
 </section>
 
-<!-- Section: Timeline (الآن أصبحت بطاقات تفاعلية قابلة للضغط بقوة!) -->
+<!-- Section: Timeline (بطاقات تفاعلية) -->
 <section>
     <h2 class="title hidden">✨ أجمل الذكريات</h2>
     <div class="timeline">
@@ -429,21 +404,12 @@
     </div>
 </section>
 
-<!-- Section: Reasons Game -->
-<section>
-    <h2 class="title hidden">❤️ أسباب بحبك عشانها</h2>
-    <div class="reasons-box hidden">
-        <button onclick="showReason()">اضغطي هنا ❤️</button>
-        <div class="reason" id="reason">...</div>
-    </div>
-</section>
-
 <!-- Footer -->
 <section class="footer">
     <p>❤️ مهما عدت الأيام... هتفضلي شخص ليه مكانة خاصة جدًا ❤️</p>
 </section>
 
-<!-- المودال السحري (صندوق الرسائل المنبثق المشترك) -->
+<!-- المودال السحري (صندوق الرسائل المنبثق) -->
 <div class="modal" id="messageModal">
     <div class="modal-content">
         <h3 id="modalTitle">العنوان</h3>
@@ -459,25 +425,6 @@
     const diff = today - startDate;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     document.getElementById("days").innerText = days + " يوم";
-
-    /* Reasons array */
-    const reasons = [
-        "بحب ضحكتك ❤️",
-        "بحب طريقتك ❤️",
-        "بحب وجودك ❤️",
-        "بحب كلامك ❤️",
-        "بحب اهتمامك ❤️",
-        "بحب ذكرياتنا ❤️",
-        "بحب شخصيتك ❤️",
-        "بحب عفويتك ❤️",
-        "بحب كل حاجة فيكي ❤️",
-        "بحب إنك يارا ❤️"
-    ];
-
-    function showReason() {
-        const random = Math.floor(Math.random() * reasons.length);
-        document.getElementById("reason").innerHTML = reasons[random];
-    }
 
     /* Modal Popup Functions */
     function openMessage(title, text) {
