@@ -1,451 +1,389 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ Yara ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ Yara ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Cairo',sans-serif;
-scroll-behavior:smooth;
-}
+        body {
+            background: linear-gradient(135deg, #fffdf6, #fff8dc);
+            overflow-x: hidden;
+            color: #6d5b00;
+        }
 
-body{
-background:linear-gradient(135deg,#fffdf6,#fff8dc);
-overflow-x:hidden;
-color:#6d5b00;
-}
+        /* Hearts */
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
 
-/* Hearts */
+        .hearts span {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: float 12s linear infinite;
+            opacity: .6;
+        }
 
-.hearts{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:-1;
-overflow:hidden;
-}
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-.hearts span{
-position:absolute;
-bottom:-50px;
-font-size:25px;
-animation:float 12s linear infinite;
-opacity:.6;
-}
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            text-align: center;
+        }
 
-@keyframes float{
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
-}
+        .profile {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            margin-bottom: 25px;
+        }
 
-/* Hero */
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
 
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:30px;
-text-align:center;
-}
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
 
-.profile{
-width:220px;
-height:220px;
-border-radius:50%;
-object-fit:cover;
-border:6px solid white;
-box-shadow:0 15px 35px rgba(0,0,0,.15);
-margin-bottom:25px;
-}
+        .counter {
+            margin-top: 30px;
+            background: white;
+            padding: 20px 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        }
 
-.hero h1{
-font-size:3rem;
-margin-bottom:10px;
-}
+        .counter h2 {
+            font-size: 1.1rem;
+        }
 
-.hero p{
-font-size:1.2rem;
-max-width:600px;
-}
+        .counter span {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-.counter{
-margin-top:30px;
-background:white;
-padding:20px 35px;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
+        /* Sections */
+        section {
+            padding: 90px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-.counter h2{
-font-size:1.1rem;
-}
+        .title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 50px;
+        }
 
-.counter span{
-display:block;
-font-size:2.5rem;
-font-weight:bold;
-margin-top:10px;
-}
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
 
-/* Sections */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #e0c64f;
+            transform: translateX(50%);
+        }
 
-section{
-padding:90px 20px;
-max-width:1100px;
-margin:auto;
-}
+        .memory {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            width: 45%;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,.08);
+        }
 
-.title{
-text-align:center;
-font-size:2.3rem;
-margin-bottom:50px;
-}
+        .memory:nth-child(odd) {
+            margin-right: auto;
+        }
 
-/* Timeline */
+        .memory:nth-child(even) {
+            margin-left: auto;
+        }
 
-.timeline{
-position:relative;
-}
+        .memory h3 {
+            margin-bottom: 10px;
+        }
 
-.timeline::before{
-content:'';
-position:absolute;
-right:50%;
-top:0;
-width:4px;
-height:100%;
-background:#e0c64f;
-transform:translateX(50%);
-}
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-.memory{
-background:white;
-padding:20px;
-border-radius:20px;
-width:45%;
-margin-bottom:40px;
-box-shadow:0 10px 20px rgba(0,0,0,.08);
-}
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: .4s;
+            cursor: pointer;
+        }
 
-.memory:nth-child(odd){
-margin-right:auto;
-}
+        .gallery img:hover {
+            transform: scale(1.04);
+        }
 
-.memory:nth-child(even){
-margin-left:auto;
-}
+        /* Reasons */
+        .reasons-box {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        }
 
-.memory h3{
-margin-bottom:10px;
-}
+        .reasons-box button {
+            background: #e0c64f;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            outline: none;
+            transition: 0.2s;
+        }
 
-/* Gallery */
+        .reasons-box button:active {
+            transform: scale(0.95);
+        }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+        .reason {
+            margin-top: 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 60px;
+        }
 
-.gallery img{
-width:100%;
-height:300px;
-object-fit:cover;
-border-radius:20px;
-transition:.4s;
-cursor:pointer;
-}
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 70px 20px;
+            font-size: 1.2rem;
+        }
 
-.gallery img:hover{
-transform:scale(1.04);
-}
+        /* Animation */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s ease;
+        }
 
-/* Reasons */
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.reasons-box{
-text-align:center;
-background:white;
-padding:40px;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
+        @media(max-width:768px){
+            .hero h1 {
+                font-size: 2.2rem;
+            }
 
-.reasons-box button{
-background:#e0c64f;
-border:none;
-padding:15px 30px;
-border-radius:15px;
-font-size:18px;
-cursor:pointer;
-color:white;
-font-weight:bold;
-}
+            .timeline::before {
+                display: none;
+            }
 
-.reason{
-margin-top:25px;
-font-size:1.3rem;
-font-weight:bold;
-min-height:60px;
-}
-
-/* Footer */
-
-.footer{
-text-align:center;
-padding:70px 20px;
-font-size:1.2rem;
-}
-
-/* Animation */
-
-.hidden{
-opacity:0;
-transform:translateY(50px);
-transition:1s;
-}
-
-.show{
-opacity:1;
-transform:translateY(0);
-}
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:2.2rem;
-}
-
-.timeline::before{
-display:none;
-}
-
-.memory{
-width:100%;
-}
-}
-
-</style>
+            .memory {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div class="hearts" id="hearts"></div>
 
 <section class="hero">
+    <img src="images/yara1.jpg" class="profile" alt="Yara">
 
-<img
-<img
-src="images/yara1.jpg"
-class="profile">
+    <h1>❤️ Yara ❤️</h1>
 
-<h1>❤️ Yara ❤️</h1>
+    <p>
+        كل لحظة وكل ذكرى هنا معمولة بحب...
+        ومهما عدت الأيام هتفضل ليها مكانة خاصة.
+    </p>
 
-<p>
-كل لحظة وكل ذكرى هنا معمولة بحب...
-ومهما عدت الأيام هتفضل ليها مكانة خاصة.
-</p>
-
-<div class="counter">
-<h2>❤️ بقالنا مع بعض</h2>
-<span id="days">0</span>
-</div>
-
+    <div class="counter">
+        <h2>❤️ بقالنا مع بعض</h2>
+        <span id="days">0</span>
+    </div>
 </section>
 
 <section>
+    <h2 class="title hidden">✨ أجمل الذكريات</h2>
 
-<h2 class="title hidden">✨ أجمل الذكريات</h2>
+    <div class="timeline">
+        <div class="memory hidden">
+            <h3>❤️ 28-10-2024</h3>
+            <p>بداية الحكاية وأول خطوة في الرحلة.</p>
+        </div>
 
-<div class="timeline">
+        <div class="memory hidden">
+            <h3>❤️ 17-2</h3>
+            <p>ذكرى جميلة عمرها ما هتتنسي.</p>
+        </div>
 
-<div class="memory hidden">
-<h3>❤️ 28-10-2024</h3>
-<p>بداية الحكاية وأول خطوة في الرحلة.</p>
-</div>
+        <div class="memory hidden">
+            <h3>❤️ 24-2</h3>
+            <p>يوم مختلف مليان مشاعر حقيقية.</p>
+        </div>
 
-<div class="memory hidden">
-<h3>❤️ 17-2</h3>
-<p>ذكرى جميلة عمرها ما هتتنسي.</p>
-</div>
+        <div class="memory hidden">
+            <h3>❤️ 28-2</h3>
+            <p>لحظة من أجمل اللحظات.</p>
+        </div>
 
-<div class="memory hidden">
-<h3>❤️ 24-2</h3>
-<p>يوم مختلف مليان مشاعر حقيقية.</p>
-</div>
-
-<div class="memory hidden">
-<h3>❤️ 28-2</h3>
-<p>لحظة من أجمل اللحظات.</p>
-</div>
-
-<div class="memory hidden">
-<h3>❤️ ليلة العيد</h3>
-<p>ليلة ليها مكان خاص في القلب.</p>
-</div>
-
-</div>
-
+        <div class="memory hidden">
+            <h3>❤️ ليلة العيد</h3>
+            <p>ليلة ليها مكان خاص في القلب.</p>
+        </div>
+    </div>
 </section>
 
 <section>
+    <h2 class="title hidden">📸 صور وذكريات</h2>
 
-<h2 class="title hidden">📸 صور وذكريات</h2>
-
-<div class="gallery">
-
-<img src="images/yara1.jpg">
-<img src="images/yara2.jpg">
-<img src="images/yara3.jpg">
-<img src="images/yara4.jpg">
-<img src="images/yara5.jpg">
-<img src="images/yara6.jpg">
-<img src="images/yara7.jpg">
-<img src="images/yara8.jpg">
-<img src="images/yara9.jpg">
-<img src="images/yara10.jpg">
-<img src="images/yara11.jpg">
-<img src="images/yara12.jpg">
-</div>
-
+    <div class="gallery">
+        <img src="images/yara1.jpg" alt="Memory 1">
+        <img src="images/yara2.jpg" alt="Memory 2">
+        <img src="images/yara3.jpg" alt="Memory 3">
+        <img src="images/yara4.jpg" alt="Memory 4">
+        <img src="images/yara5.jpg" alt="Memory 5">
+        <img src="images/yara6.jpg" alt="Memory 6">
+        <img src="images/yara7.jpg" alt="Memory 7">
+        <img src="images/yara8.jpg" alt="Memory 8">
+        <img src="images/yara9.jpg" alt="Memory 9">
+        <img src="images/yara10.jpg" alt="Memory 10">
+        <img src="images/yara11.jpg" alt="Memory 11">
+        <img src="images/yara12.jpg" alt="Memory 12">
+        <img src="images/yara13.jpg" alt="Memory 13">
+        <img src="images/yara14.jpg" alt="Memory 14">
+        <img src="images/yara15.jpg" alt="Memory 15">
+        <img src="images/yara16.jpg" alt="Memory 16">
+        <img src="images/yara17.jpg" alt="Memory 17">
+    </div>
 </section>
 
 <section>
+    <h2 class="title hidden">❤️ أسباب بحبك عشانها</h2>
 
-<h2 class="title hidden">❤️ أسباب بحبك عشانها</h2>
-
-<div class="reasons-box hidden">
-
-<button onclick="showReason()">
-اضغطي هنا ❤️
-</button>
-
-<div class="reason" id="reason">
-...
-</div>
-
-</div>
-
+    <div class="reasons-box hidden">
+        <button onclick="showReason()">اضغطي هنا ❤️</button>
+        <div class="reason" id="reason">...</div>
+    </div>
 </section>
 
 <section class="footer">
-
-<p>
-❤️ مهما عدت الأيام...
-هتفضلي شخص ليه مكانة خاصة جدًا ❤️
-</p>
-
+    <p>
+        ❤️ مهما عدت الأيام...
+        هتفضلي شخص ليه مكانة خاصة جدًا ❤️
+    </p>
 </section>
 
 <script>
+    /* Counter */
+    const startDate = new Date("2024-10-28");
+    const today = new Date();
+    const diff = today - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    
+    document.getElementById("days").innerText = days + " يوم";
 
-/* Counter */
+    /* Hearts */
+    const hearts = document.getElementById("hearts");
+    for(let i = 0; i < 25; i++) {
+        let heart = document.createElement("span");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = (6 + Math.random() * 8) + "s";
+        heart.style.fontSize = (18 + Math.random() * 18) + "px";
+        heart.style.animationDelay = Math.random() * 5 + "s";
+        hearts.appendChild(heart);
+    }
 
-const startDate = new Date("2024-10-28");
-const today = new Date();
+    /* Reasons */
+    const reasons = [
+        "بحب ضحكتك ❤️",
+        "بحب طريقتك ❤️",
+        "بحب وجودك ❤️",
+        "بحب كلامك ❤️",
+        "بحب اهتمامك ❤️",
+        "بحب ذكرياتنا ❤️",
+        "بحب شخصيتك ❤️",
+        "بحب عفويتك ❤️",
+        "بحب كل حاجة فيكي ❤️",
+        "بحب إنك يارا ❤️"
+    ];
 
-const diff =
-today - startDate;
+    function showReason() {
+        const random = Math.floor(Math.random() * reasons.length);
+        document.getElementById("reason").innerHTML = reasons[random];
+    }
 
-const days =
-Math.floor(diff / (1000*60*60*24));
+    /* Scroll Animation */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.1 }); // إضافة عتبة ظهور لضمان سلاسة الأنيميشن عند التمرير
 
-document.getElementById("days").innerText =
-days + " يوم";
-
-/* Hearts */
-
-const hearts =
-document.getElementById("hearts");
-
-for(let i=0;i<25;i++){
-
-let heart =
-document.createElement("span");
-
-heart.innerHTML="❤️";
-
-heart.style.left=
-Math.random()*100+"%";
-
-heart.style.animationDuration=
-(6 + Math.random()*8)+"s";
-
-heart.style.fontSize=
-(18 + Math.random()*18)+"px";
-
-heart.style.animationDelay=
-Math.random()*5+"s";
-
-hearts.appendChild(heart);
-}
-
-/* Reasons */
-
-const reasons = [
-
-"بحب ضحكتك ❤️",
-"بحب طريقتك ❤️",
-"بحب وجودك ❤️",
-"بحب كلامك ❤️",
-"بحب اهتمامك ❤️",
-"بحب ذكرياتنا ❤️",
-"بحب شخصيتك ❤️",
-"بحب عفويتك ❤️",
-"بحب كل حاجة فيكي ❤️",
-"بحب إنك يارا ❤️"
-
-];
-
-function showReason(){
-
-const random =
-Math.floor(Math.random()*reasons.length);
-
-document.getElementById("reason").innerHTML =
-reasons[random];
-
-}
-
-/* Scroll Animation */
-
-const observer =
-new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-});
-
-document
-.querySelectorAll(".hidden")
-.forEach(el=>observer.observe(el));
-
+    document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
 </script>
 
 </body>
