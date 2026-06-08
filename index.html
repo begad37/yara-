@@ -22,40 +22,6 @@
             color: #6d5b00;
         }
 
-        /* Hearts */
-        .hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-            top: 0;
-            left: 0;
-        }
-
-        .hearts span {
-            position: absolute;
-            bottom: -50px;
-            font-size: 25px;
-            animation: float 12s linear infinite;
-            opacity: .6;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-120vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
         /* Hero */
         .hero {
             min-height: 100vh;
@@ -245,8 +211,6 @@
 </head>
 <body>
 
-<div class="hearts" id="hearts"></div>
-
 <section class="hero">
     <img src="images/yara1.jpg" class="profile" alt="Yara">
 
@@ -310,11 +274,6 @@
         <img src="images/yara10.jpg" alt="Memory 10">
         <img src="images/yara11.jpg" alt="Memory 11">
         <img src="images/yara12.jpg" alt="Memory 12">
-        <img src="images/yara13.jpg" alt="Memory 13">
-        <img src="images/yara14.jpg" alt="Memory 14">
-        <img src="images/yara15.jpg" alt="Memory 15">
-        <img src="images/yara16.jpg" alt="Memory 16">
-        <img src="images/yara17.jpg" alt="Memory 17">
     </div>
 </section>
 
@@ -343,18 +302,6 @@
     
     document.getElementById("days").innerText = days + " يوم";
 
-    /* Hearts */
-    const hearts = document.getElementById("hearts");
-    for(let i = 0; i < 25; i++) {
-        let heart = document.createElement("span");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "%";
-        heart.style.animationDuration = (6 + Math.random() * 8) + "s";
-        heart.style.fontSize = (18 + Math.random() * 18) + "px";
-        heart.style.animationDelay = Math.random() * 5 + "s";
-        hearts.appendChild(heart);
-    }
-
     /* Reasons */
     const reasons = [
         "بحب ضحكتك ❤️",
@@ -381,7 +328,7 @@
                 entry.target.classList.add("show");
             }
         });
-    }, { threshold: 0.1 }); // إضافة عتبة ظهور لضمان سلاسة الأنيميشن عند التمرير
+    }, { threshold: 0.1 });
 
     document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
 </script>
